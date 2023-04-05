@@ -37,6 +37,38 @@ function App() {
     console.log("area", area4);
     setS4Result(area4);
   }
+  // 5 sides
+  const [s5, setS5] = useState({
+    side1: "",
+    side2: "",
+    diagonal: "",
+    side3: "",
+    side4: "",
+  });
+  const [s5Result, setS5Result] = useState(0);
+  function valueHandler5(e) {
+    return setS5({ ...s5, [e.target.name]: e.target.value });
+  }
+  function calculateHandler5(s5) {
+    const p1 = Number(s5.side1) + Number(s5.side2) + Number(s5.diagonal);
+    const s1 = p1 / 2;
+    const area1 = Math.sqrt(
+      s1 *
+        (s1 - Number(s5.side1)) *
+        (s1 - Number(s5.side2)) *
+        (s1 - Number(s5.diagonal))
+    );
+    const p2 = Number(s5.diagonal) + Number(s5.side3) + Number(s5.side4);
+    const s2 = p2 / 2;
+    const area2 = Math.sqrt(
+      s2 *
+        (s1 - Number(s5.diagonal)) *
+        (s1 - Number(s5.side3)) *
+        (s1 - Number(s5.side4))
+    );
+    const totalArea = area1 + area2;
+    setS5Result(totalArea);
+  }
   return (
     <div className="App">
       <div>
@@ -157,6 +189,83 @@ function App() {
           <h4>In Yards:&nbsp; {(s4Result / 9).toFixed(3)}</h4>
           <h4>In Guntas: &nbsp; {(s4Result / 1089).toFixed(3)}</h4>
           <h4>In Acres: &nbsp; {(s4Result / 43560).toFixed(3)}</h4>
+        </Grid>
+      </div>
+      {/* // 5sides */}
+      <div>
+        {console.log("s5", s5)}
+        <Grid>Triangle with 5 sides</Grid>
+        <Grid sx={{ mb: 2 }}>
+          <TextField
+            type="number"
+            sx={{ m: 1 }}
+            name="side1"
+            value={s5.side1}
+            label="1st Side"
+            variant="filled"
+            onChange={valueHandler5}
+            placeholder="Enter 1st Side"
+            //   defaultValue={0}
+          />
+          <TextField
+            type="number"
+            sx={{ m: 1 }}
+            name="side2"
+            value={s5.side2}
+            label="2nd Side"
+            variant="filled"
+            onChange={valueHandler5}
+            placeholder="Enter 2nd Side"
+            //   defaultValue={0}
+          />
+          <TextField
+            type="number"
+            sx={{ m: 1 }}
+            name="diagonal"
+            value={s5.diagonal}
+            label="Diagonal"
+            variant="filled"
+            onChange={valueHandler5}
+            placeholder="Enter Diagonal"
+            //   defaultValue={0}
+          />
+          <TextField
+            type="number"
+            sx={{ m: 1 }}
+            name="side3"
+            value={s5.side3}
+            label="3rd Side"
+            variant="filled"
+            onChange={valueHandler5}
+            placeholder="Enter 3rd Side"
+            //   defaultValue={0}
+          />
+          <TextField
+            type="number"
+            sx={{ m: 1 }}
+            name="side4"
+            value={s5.side4}
+            label="4rd Side"
+            variant="filled"
+            onChange={valueHandler5}
+            placeholder="Enter 4th Side"
+            //   defaultValue={0}
+          />
+        </Grid>
+        <Grid>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              calculateHandler5(s5);
+            }}
+          >
+            Calculate
+          </Button>
+          <h3>Result:</h3>
+          <h4>In Sq fts:&nbsp; {s5Result.toFixed(3)}</h4>
+          <h4>In Yards:&nbsp; {(s5Result / 9).toFixed(3)}</h4>
+          <h4>In Guntas: &nbsp; {(s5Result / 1089).toFixed(3)}</h4>
+          <h4>In Acres: &nbsp; {(s5Result / 43560).toFixed(3)}</h4>
         </Grid>
       </div>
     </div>
