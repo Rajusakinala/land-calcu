@@ -6,6 +6,18 @@ function App() {
     border: "2px solid blue",
     margin: "10px",
   };
+  // 2 sides traingle
+  const [s2, setS2] = useState({ side1: "", side2: "" });
+  const [s2Result, setS2Result] = useState(0);
+  function valueHandler2(e) {
+    return setS2({ ...s2, [e.target.name]: e.target.value });
+  }
+  function calculateHandler2(s2) {
+    const area = 0.5 * Number(s2.side1) * Number(s2.side2);
+    console.log("area", area);
+    setS2Result(area);
+  }
+  // 3 sides traingle
   var area;
   const [s3, setS3] = useState({ side1: "", side2: "", side3: "" });
   const [s3Result, setS3Result] = useState(0);
@@ -75,9 +87,59 @@ function App() {
   }
   return (
     <div className="App">
+      <div>
+        <h2>RajuParusharamulu</h2>
+      </div>
+      <div style={box}>
+        {console.log("s2", s2)}
+        <Grid>
+          <h2>Triangle with 2 sides</h2>
+        </Grid>
+        <Grid sx={{ mb: 2 }}>
+          <TextField
+            type="number"
+            sx={{ m: 1 }}
+            name="side1"
+            value={s2.side1}
+            label="1st Side"
+            variant="filled"
+            onChange={valueHandler2}
+            placeholder="Enter 1st Side"
+            //   defaultValue={0}
+          />
+          <TextField
+            type="number"
+            sx={{ m: 1 }}
+            name="side2"
+            value={s2.side2}
+            label="2nd Side"
+            variant="filled"
+            onChange={valueHandler2}
+            placeholder="Enter 2nd Side"
+            //   defaultValue={0}
+          />
+        </Grid>
+        <Grid>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              calculateHandler2(s2);
+            }}
+          >
+            Calculate
+          </Button>
+          <h3>Result:</h3>
+          <h4>In Sq fts:&nbsp; {s2Result.toFixed(3)}</h4>
+          <h4>In Yards:&nbsp; {(s2Result / 9).toFixed(3)}</h4>
+          <h4>In Guntas: &nbsp; {(s2Result / 1089).toFixed(3)}</h4>
+          <h4>In Acres: &nbsp; {(s2Result / 43560).toFixed(3)}</h4>
+        </Grid>
+      </div>
       <div style={box}>
         {console.log("s3", s3)}
-        <Grid>Triangle with 3 sides</Grid>
+        <Grid>
+          <h2>Triangle with 3 sides</h2>
+        </Grid>
         <Grid sx={{ mb: 2 }}>
           <TextField
             type="number"
@@ -132,7 +194,9 @@ function App() {
       {/* // Rect 4 */}
       <div style={box}>
         {console.log("s4", s4)}
-        <Grid>Reactangle with 4 sides</Grid>
+        <Grid>
+          <h2>Reactangle with 4 sides</h2>
+        </Grid>
         <Grid sx={{ mb: 2 }}>
           <TextField
             type="number"
@@ -172,7 +236,7 @@ function App() {
             sx={{ m: 1 }}
             value={s4.side4}
             type="number"
-            label="4rd Side"
+            label="4th Side"
             variant="filled"
             onChange={valueHandler4}
             placeholder="Enter 4th Side"
@@ -198,7 +262,9 @@ function App() {
       {/* // 5sides */}
       <div style={box}>
         {console.log("s5", s5)}
-        <Grid>Triangle with 5 sides</Grid>
+        <Grid>
+          <h2>Triangle with 5 sides</h2>
+        </Grid>
         <Grid sx={{ mb: 2 }}>
           <TextField
             type="number"
@@ -249,7 +315,7 @@ function App() {
             sx={{ m: 1 }}
             name="side4"
             value={s5.side4}
-            label="4rd Side"
+            label="4th Side"
             variant="filled"
             onChange={valueHandler5}
             placeholder="Enter 4th Side"
