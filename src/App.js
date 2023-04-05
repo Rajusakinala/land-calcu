@@ -2,6 +2,10 @@ import "./App.css";
 import React, { useState } from "react";
 import { Grid, TextField, Button } from "@mui/material";
 function App() {
+  const box = {
+    border: "2px solid blue",
+    margin: "10px",
+  };
   var area;
   const [s3, setS3] = useState({ side1: "", side2: "", side3: "" });
   const [s3Result, setS3Result] = useState(0);
@@ -71,7 +75,7 @@ function App() {
   }
   return (
     <div className="App">
-      <div>
+      <div style={box}>
         {console.log("s3", s3)}
         <Grid>Triangle with 3 sides</Grid>
         <Grid sx={{ mb: 2 }}>
@@ -126,7 +130,7 @@ function App() {
         </Grid>
       </div>
       {/* // Rect 4 */}
-      <div>
+      <div style={box}>
         {console.log("s4", s4)}
         <Grid>Reactangle with 4 sides</Grid>
         <Grid sx={{ mb: 2 }}>
@@ -192,7 +196,7 @@ function App() {
         </Grid>
       </div>
       {/* // 5sides */}
-      <div>
+      <div style={box}>
         {console.log("s5", s5)}
         <Grid>Triangle with 5 sides</Grid>
         <Grid sx={{ mb: 2 }}>
