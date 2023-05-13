@@ -66,30 +66,30 @@ function App() {
     return setS5({ ...s5, [e.target.name]: e.target.value });
   }
   function calculateHandler5(s5) {
-    console.log("s5", s5);
+    // console.log("s5", s5);
     const p1 = Number(s5.side1) + Number(s5.side2) + Number(s5.diagonal);
-    console.log("p1", p1);
+    // console.log("p1", p1);
     const sp1 = p1 / 2;
-    console.log("s1", sp1);
+    // console.log("s1", sp1);
     const area1 = Math.sqrt(
       sp1 *
         (sp1 - Number(s5.side1)) *
         (sp1 - Number(s5.side2)) *
         (sp1 - Number(s5.diagonal))
     );
-    console.log("area1", area1);
+    // console.log("area1", area1);
     const p2 = Number(s5.diagonal) + Number(s5.side3) + Number(s5.side4);
-    console.log("p2", p2);
+    // console.log("p2", p2);
     const sp2 = p2 / 2;
-    console.log("s2", s2);
+    // console.log("s2", s2);
     const area2 = Math.sqrt(
       sp2 *
         (sp2 - Number(s5.diagonal)) *
         (sp2 - Number(s5.side3)) *
         (sp2 - Number(s5.side4))
     );
-    console.log("area2", area2);
-    console.log("first", area1, area2);
+    // console.log("area2", area2);
+    // console.log("first", area1, area2);
     const totalArea = area1 + area2;
     setS5Result(totalArea);
   }
