@@ -14,7 +14,7 @@ function App() {
   }
   function calculateHandler2(s2) {
     const area = 0.5 * Number(s2.side1) * Number(s2.side2);
-    console.log("area", area);
+    // console.log("area", area);
     setS2Result(area);
   }
   // 3 sides traingle
@@ -27,14 +27,14 @@ function App() {
   function calculateHandler(s3) {
     const p = Number(s3.side1) + Number(s3.side2) + Number(s3.side3);
     const s = p / 2;
-    console.log("s", s);
+    // console.log("s", s);
     area = Math.sqrt(
       s *
         (s - Number(s3.side1)) *
         (s - Number(s3.side2)) *
         (s - Number(s3.side3))
     );
-    console.log("area", area);
+    // console.log("area", area);
     setS3Result(area);
   }
   // Rect 4
@@ -50,38 +50,46 @@ function App() {
     const y = Number(s4.side2) + Number(s4.side4);
     const b = y / 2;
     area4 = a * b;
-    console.log("area", area4);
+    // console.log("area", area4);
     setS4Result(area4);
   }
   // 5 sides
   const [s5, setS5] = useState({
-    side1: "",
-    side2: "",
-    diagonal: "",
-    side3: "",
-    side4: "",
+    side1: 0,
+    side2: 0,
+    diagonal: 0,
+    side3: 0,
+    side4: 0,
   });
   const [s5Result, setS5Result] = useState(0);
   function valueHandler5(e) {
     return setS5({ ...s5, [e.target.name]: e.target.value });
   }
   function calculateHandler5(s5) {
+    console.log("s5", s5);
     const p1 = Number(s5.side1) + Number(s5.side2) + Number(s5.diagonal);
-    const s1 = p1 / 2;
+    console.log("p1", p1);
+    const sp1 = p1 / 2;
+    console.log("s1", sp1);
     const area1 = Math.sqrt(
-      s1 *
-        (s1 - Number(s5.side1)) *
-        (s1 - Number(s5.side2)) *
-        (s1 - Number(s5.diagonal))
+      sp1 *
+        (sp1 - Number(s5.side1)) *
+        (sp1 - Number(s5.side2)) *
+        (sp1 - Number(s5.diagonal))
     );
+    console.log("area1", area1);
     const p2 = Number(s5.diagonal) + Number(s5.side3) + Number(s5.side4);
-    const s2 = p2 / 2;
+    console.log("p2", p2);
+    const sp2 = p2 / 2;
+    console.log("s2", s2);
     const area2 = Math.sqrt(
-      s2 *
-        (s1 - Number(s5.diagonal)) *
-        (s1 - Number(s5.side3)) *
-        (s1 - Number(s5.side4))
+      sp2 *
+        (sp2 - Number(s5.diagonal)) *
+        (sp2 - Number(s5.side3)) *
+        (sp2 - Number(s5.side4))
     );
+    console.log("area2", area2);
+    console.log("first", area1, area2);
     const totalArea = area1 + area2;
     setS5Result(totalArea);
   }
@@ -91,7 +99,7 @@ function App() {
         <h2>RajuParusharamulu</h2>
       </div>
       <div style={box}>
-        {console.log("s2", s2)}
+        {/* {console.log("s2", s2)} */}
         <Grid>
           <h2>Triangle with 2 sides</h2>
         </Grid>
@@ -136,7 +144,7 @@ function App() {
         </Grid>
       </div>
       <div style={box}>
-        {console.log("s3", s3)}
+        {/* {console.log("s3", s3)} */}
         <Grid>
           <h2>Triangle with 3 sides</h2>
         </Grid>
@@ -193,7 +201,7 @@ function App() {
       </div>
       {/* // Rect 4 */}
       <div style={box}>
-        {console.log("s4", s4)}
+        {/* {console.log("s4", s4)} */}
         <Grid>
           <h2>Reactangle with 4 sides</h2>
         </Grid>
@@ -261,7 +269,7 @@ function App() {
       </div>
       {/* // 5sides */}
       <div style={box}>
-        {console.log("s5", s5)}
+        {/* {console.log("s5", s5)} */}
         <Grid>
           <h2>Triangle with 5 sides</h2>
         </Grid>
